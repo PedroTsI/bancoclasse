@@ -8,7 +8,7 @@ class Pessoa {
         this._dataNasc = dataNasc;
     }
     get nome() {
-        return this._nome;
+        return this._nome + '-Física';
     }
     set nome(novoNome) {
         this._nome = novoNome;

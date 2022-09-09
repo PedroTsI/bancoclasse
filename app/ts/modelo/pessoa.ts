@@ -1,5 +1,5 @@
 class Pessoa{
-    private _nome: string;
+    protected _nome: string;
     private _idade: number;
     private _dataNasc: Date;
 
@@ -9,7 +9,7 @@ class Pessoa{
         this._dataNasc = dataNasc;
     }
     get nome(){
-        return this._nome;
+        return this._nome + '-Física';
     }
 
     set nome(novoNome){

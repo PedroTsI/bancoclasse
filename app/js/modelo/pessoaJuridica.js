@@ -1,3 +1,9 @@
 class PessoaJuridica extends Pessoa {
-    cnpj;
+    _cnpj;
+    get cnpj() {
+        return this._cnpj;
+    }
+    get nome() {
+        return this._nome + '-Juridica';
+    }
 }
