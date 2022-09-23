@@ -1,14 +1,16 @@
 class Pessoa {
     _nome;
     _idade;
-    _dataNasc;
-    constructor(nome, idade, dataNasc) {
+    _dataNascimento;
+    _contas;
+    constructor(nome, idade, dataNascimento) {
         this._nome = nome;
         this._idade = idade;
-        this._dataNasc = dataNasc;
+        this._dataNascimento = dataNascimento;
+        this._contas = new Array();
     }
     get nome() {
-        return this._nome + '-Física';
+        return this._nome;
     }
     set nome(novoNome) {
         this._nome = novoNome;
@@ -19,10 +21,32 @@ class Pessoa {
     set idade(novaIdade) {
         this._idade = novaIdade;
     }
-    get dataNasc() {
-        return this._dataNasc;
+    get dataNascimento() {
+        return this._dataNascimento;
     }
-    set dataNasc(novaData) {
-        this._dataNasc = novaData;
+    set dataNascimento(novaData) {
+        this._dataNascimento = novaData;
+    }
+    get contas() {
+        return this._contas;
+    }
+    saldoTotalContas() {
+        return this._contas.map(conta => {
+            return conta.getSaldo();
+        }).reduce((saldoAnterior, saldoAtual) => {
+            return saldoAnterior + saldoAtual;
+        });
+    }
+    mediaSaldoContas() {
+        return this.saldoTotalContas() / this.contas.length;
+    }
+    acrescentarConta(conta) {
+        this._contas.push(conta);
+    }
+    removerConta(numero) {
+        this._contas.splice(this._contas.findIndex(conta => conta.numero === numero), 1);
+    }
+    pesquisarConta(numero) {
+        return this._contas.find(conta => conta.numero === numero);
     }
 }
